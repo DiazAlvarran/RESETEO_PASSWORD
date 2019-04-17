@@ -1,0 +1,84 @@
+body{
+	padding: 0px;
+	margin: 0px;
+}
+
+header{
+	background: black;
+	height: 82px;
+	margin: 0px;
+}
+
+#logo_sunarp {
+	position: fixed;
+	width: 135px;
+	height: 60px;
+	left: 20px;
+	top: 10px;
+}
+
+#title{
+	display: inline-block;
+	color: #ff9900;
+	font-size: 32px;
+	margin-left: 170px;
+}
+
+#info_usuario{
+	display: inline-block;
+	color: #009e0f;
+	margin-right: 20px;
+	margin-top: 12px;
+	float: right;
+}
+
+h4{
+	display: inline;	
+}
+
+#btn_cerrar_sesion{
+	display: inline-block;
+	background-color: red;
+	border: none;
+	color: white;
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;
+	padding: 10px;
+}
+
+main{
+	text-align: center;
+}
+
+h1{
+	font-size: 40px;
+}
+
+h6{
+	font-size: 13px;
+	color: #009e0f;
+	margin: 0px;
+}
+
+table{
+	margin: 30px auto;
+	border: solid black 1px;
+	width: 70%;
+}
+
+td, th{
+	border: solid black 1px;
+}
+
+#content_button{
+	text-align: center;
+}
+
+#btn_recuperar{
+	padding: 10px;
+	background-color: #2b78e4;
+	color: white;
+	border: none;
+	margin: auto;
+}
