@@ -1,3 +1,5 @@
+/**/
+
 $(document).ready(function() {
 	// Evento de botón
 	$("#btn_ingresar").click(login);

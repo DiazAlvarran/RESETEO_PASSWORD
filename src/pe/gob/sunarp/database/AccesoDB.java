@@ -23,7 +23,7 @@ public class AccesoDB {
             Class.forName("oracle.jdbc.OracleDriver").newInstance();
             // Paso 2: Obtener el objeto Connection 
             //String url = "jdbc:oracle:thin:@172.17.36.25:1521:XE";
-            String url = "jdbc:oracle:thin:@172.20.90.47:1521:or0101";
+            String url = "jdbc:oracle:thin:@172.20.90.47:1521:desa";
             //String url = "jdbc:oracle:thin:@172.20.190.10:1530:or0101_1";
             //String url = "jdbc:oracle:thin:@localhost:1521:XE";
             

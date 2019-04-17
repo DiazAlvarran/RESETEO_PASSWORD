@@ -42,10 +42,13 @@ public class PrincipalController extends HttpServlet {
 		}
 	}
 	
+	/**================================================================
+	============OBTENER LOS DATOS DEL USUARIO LOGUEADO=================
+	================================================================**/	
 	private void getDatos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Entrada
 		
+		// Entrada
 		HttpSession session = request.getSession();
 		
 		System.err.println("Se va poner el nombre:");
@@ -65,7 +68,7 @@ public class PrincipalController extends HttpServlet {
 		System.err.println("CONTROLLER: " + PrincipalController.class.getName() + "\n"
 			+ "private void : get_datos" + "\n" + "Nombre de área: " + no_area + "\n" + "Nombre completo: " + c_t_nombre + "\n" + "Usuario: " + ap_pate_empl + " " + ap_mate_empl + " " + no_empl);
 		
-		
+		// Definir usuario
 		UsuarioLogged obj = new UsuarioLogged();
 		obj.setC_t_nombre(c_t_nombre);
 		obj.setNo_empl(no_empl);
@@ -73,25 +76,8 @@ public class PrincipalController extends HttpServlet {
 		obj.setAp_mate_empl(ap_mate_empl);
 		obj.setNo_area(no_area);
 		
+		// Crear objeto JSON
 		UtilController.usuarioJSON(response, obj);
-		/*
-		HttpSession session = request.getSession();
-		
-		System.err.println("Se va poner el nombre:");
-		System.err.println("no_area: " + session.getAttribute("no_area"));
-		System.err.println("c_t_nombre: " + session.getAttribute("c_t_nombre"));
-		
-		String no_area = (String) session.getAttribute("no_area");
-		String c_t_nombre = (String) session.getAttribute("c_t_nombre");
-		
-		System.err.println("CONTROLLER: " + PrincipalController.class.getName() + "\n"
-				+ "private void : get_datos" + "\n" + "Nombre de área: " + no_area + "\n" + "Usuario: " + c_t_nombre);
-		
-		UsuarioLogged obj = new UsuarioLogged();
-		obj.setC_t_nombre(c_t_nombre);
-		obj.setNo_area(no_area);
-
-		UtilController.usuarioJSON(response, obj);*/
 	}
 	
 	

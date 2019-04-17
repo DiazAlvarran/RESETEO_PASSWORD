@@ -13,8 +13,9 @@ import pe.gob.sunarp.models.Sistema;
 
 public class ResetService {
 	
-	public String resetPassword(String sistema, String id_user, String dbl) {
+	public String resetPassword(String id_user, String dbl) {
 		
+		// Entradas
 		Connection cn = null;
 		String mensaje = "";
 				
@@ -23,11 +24,10 @@ public class ResetService {
                 cn = AccesoDB.getConnection();
                 
                 // Proceso
-                String sql = "{call ADMINDB.SP_RESET_PASS(?,?,?)}";
+                String sql = "{call ADMINDB.SP_RESET_PASS(?,?)}";
                 CallableStatement cstm = cn.prepareCall(sql);
-                cstm.setString(1, sistema);
-                cstm.setString(2, id_user);
-                cstm.setString(3, dbl);            
+                cstm.setString(1, id_user);
+                cstm.setString(2, dbl);            
                 cstm.executeUpdate();
 
                 cstm.close();
@@ -44,7 +44,7 @@ public class ResetService {
             try {
                 cn.close();
             } catch (Exception e) {
-            	mensaje += e.getMessage();
+            	mensaje = e.getMessage();
             	System.err.println("Exception: " + e.getMessage());
             }
         }

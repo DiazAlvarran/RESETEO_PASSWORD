@@ -29,19 +29,22 @@ public class LoginController extends HttpServlet {
 		String path = request.getServletPath();
 
 		switch (path) {
-		case "/LOGIN":
+		case "/LOGIN": 		//intentar loguear
 			login(request, response);
 			break;
-		case "/principal":
+		case "/principal": 	//cargar página principal
 			principal(request, response);
 			break;
-		case "/inicio":
+		case "/inicio": 	//cerrar sesión
 			cerrarSesion(request, response);
 			break;
 		}
 
 	}
 
+	/**================================================================
+	============LOGUEARSE CON USUARIO Y CONTRASEÑA DE RED==============
+	================================================================**/
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		// Entrada
@@ -53,12 +56,12 @@ public class LoginController extends HttpServlet {
 		LoginService service = new LoginService();
 		boolean logged = service.login(user, pass);
 		
-		if(logged){ // Si el se ha logueado
+		if(logged){ // Si se ha logueado
 			
 			Usuario usuario = service.getUsuario(user); // traer datos de usuario
 			HttpSession session = request.getSession(); // crear session
 			
-			// llenar atributos de sesion
+			// crear una sesión con los atributos del Usuario
 			session.setAttribute("co_empl", usuario.getCo_empl());
 			session.setAttribute("c_t_nombre", usuario.getC_t_nombre());
 			session.setAttribute("ap_pate_empl", usuario.getAp_pate_empl());
@@ -73,6 +76,7 @@ public class LoginController extends HttpServlet {
 			
 			session.setAttribute("is_logged", 1);
 			
+			// imprimir atributos
 			System.err.println("\nSessión creada:");
 			System.err.println("co_empl : " + session.getAttribute("co_empl"));
 			System.err.println("c_t_nombre : " + session.getAttribute("c_t_nombre"));
@@ -91,7 +95,8 @@ public class LoginController extends HttpServlet {
 			
 		}
 		
-		System.err.println("\n" + mensaje);
+		System.err.println("\n" + mensaje); //imprimir mensaje
+		
 		// Salida
 		Mensaje message = new Mensaje();
 		message.setCode(logged);
@@ -101,16 +106,20 @@ public class LoginController extends HttpServlet {
 		UtilController.messageJSON(response, message);
 	}
 	
+	/**================================================================
+	======MOSTRAR PÁGINA PRINCIPAL SI EL USUARIO SE HA LOGUEADO========
+	================================================================**/
 	protected void principal(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		RequestDispatcher rd = null;
 		
 		try {
-			// Validar si esta logueado el usuario
+			// Obtener sesión
 			HttpSession session = request.getSession();
 			int is_logged = (int) session.getAttribute("is_logged");
 			
+			// Validar si el estado está logueado y enviarlo a la página correspondiente
 			if(is_logged == 1) {
 				rd = request.getRequestDispatcher("logged.html");
 			} else {
@@ -119,23 +128,24 @@ public class LoginController extends HttpServlet {
 			
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
-
-				//rd = request.getRequestDispatcher("logged.html");
 			}
 		
-		rd.forward(request, response);
+		rd.forward(request, response); // Mostrar la página correspondiente
 	}
 	
+	/**================================================================
+	============VOLVER A PÁGINA DE LOGIN AL CERRAR SESIÓN==============
+	================================================================**/
 	protected void cerrarSesion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		RequestDispatcher rd = null;
-		// Inactivando sesion
 		HttpSession session = request.getSession();
 		
+		// Cambiar el estado de la sesión
 		session.setAttribute("is_logged", 0);
 		
+		// Volver a login
 		rd = request.getRequestDispatcher("index.html");
-
 		rd.forward(request, response);
 	}
 }

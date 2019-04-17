@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pe.gob.sunarp.models.Sistema;
 import pe.gob.sunarp.models.Usuario;
 import pe.gob.sunarp.service.LoginService;
+import pe.gob.sunarp.service.ResetService;
 import pe.gob.sunarp.util.Mensaje;
 
 /**
@@ -33,16 +35,18 @@ public class ResetController extends HttpServlet {
 	
 	protected void resetPassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//System.out.println(request.getParameterValues("sistemas"));
+		String sistema = request.getParameter("sistema");
+		String id_user = request.getParameter("id_user");
+		String dbl = request.getParameter("dbl");
 		
-		String[] sistemas = request.getParameterValues("sistemas[]");
+		System.err.println("\nSistema: " + sistema + " - id_user: " + id_user + " - dbl: " + dbl);
+		
 		String mensaje = "";
+		ResetService service = new ResetService();
 		
-		for(String sistema : sistemas) {
-			mensaje = mensaje + sistema + "\n";
-		}
+		mensaje += service.resetPassword(id_user, dbl);
 		
-		System.err.println("\n=============SISTEMAS==============\n" + mensaje);
+		System.err.println("\nSistema: " + sistema + "\nMensaje: " + mensaje);
 
 	}
 

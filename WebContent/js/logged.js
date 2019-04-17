@@ -1,4 +1,5 @@
 var cont = 0;
+var allSystems = [];
 var sistemas = [];
 
 $(document).ready(function() {
@@ -40,6 +41,8 @@ function listarSistemas(){
 	
 	$.get("get_lista", {}, function(resp){
 		
+		console.log("================SISTEMAS===============\n" + resp);
+		
 		var llenarTabla = "";
 		
 		llenarTabla += "<tr>"
@@ -54,8 +57,8 @@ function listarSistemas(){
 				llenarTabla += "<td id='td_"+ cont +"'>" + fila.sistema + "</td>";
 				llenarTabla += "<td><input type='checkbox' class='cb' id='checkbox_"+ cont +"' name="+ fila.valor +" value="+ fila.valor +"></td>";
 				llenarTabla += "</tr>";
+				allSystems.push(fila);
 			}
-			console.log("==========" + fila.sistema + "==========");
 		});
 		
 		tabla.html(llenarTabla);
@@ -66,29 +69,19 @@ function listarSistemas(){
 function recuperar(){
 	var opc = confirm("¿Quieres continuar?");
 	if (opc == true) {
-
 		//recorrer todas los checkbox
 		for(var i = 1; i <= cont; i++)
         {
 			var id = "#checkbox_" + i;
 			var valor = $(id);
 			if( valor.prop('checked') ) { //si el checkbox está seleccionado lo agrego al array
-			    sistemas.push(valor.val());
+			    console.log(allSystems[i-1])
+				$.post("reset_password", allSystems[i-1], function(resp){
+					
+				});
 			}
         }
 		
-		console.log("==================SISTEMAS SELECCIONADOS====================");
-		for(var j = 0; j < sistemas.length; j++){
-			console.log(sistemas[j]);
-		}
-		
-		$.post("reset_password", {"sistemas[]": sistemas}, function(resp){
-			
-		});
-		
-		/*for(var j = 0; j < sistemas.length; j++){
-			console.log(sistemas[j]);
-		}*/
 		alert("EXITO");
 	}
 }

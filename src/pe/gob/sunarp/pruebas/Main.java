@@ -60,7 +60,6 @@ public class Main {
 		 * ============================================================================*/
 		
 		// Entradas
-		String sistema = "PERMISOS";
 		String id_user = "JDIAZA";
 		String dbl = "@DBL_0101_UNICA";
 		
@@ -68,7 +67,7 @@ public class Main {
 		String mensaje = "";
 		
 		ResetService service = new ResetService();
-		mensaje += service.resetPassword(sistema, id_user, dbl);
+		mensaje += service.resetPassword(id_user, dbl);
 		
 		System.err.println(mensaje);
 		
