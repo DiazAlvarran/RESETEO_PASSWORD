@@ -1,64 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>SRC-Principal</title>
-<link rel="stylesheet" href="css/logged.css">
-<link rel="stylesheet" href="resources/fontawesome/css/all.css">
+	<meta charset="utf-8">
+	<title>PRINCIPAL</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="resources/bootstrap-4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/fontawesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="resources/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="resources/alertifyjs/css/themes/default.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/logged.css">
 </head>
 <body>
-	<header>
-		<img src="img/logo-sunarp1.png" id="logo_sunarp">
-		<h1 id="title">Reseteo de Contraseña</h1>
-		<button id="btn_cerrar_sesion">Cerrar Sesión</button>
-		<div id="info_usuario">
-			<h4 id="nombre_usuario"></h4>
-			<br><br>
-			<h4 id="nombre_area"></h4>
-		</div>
-	</header>
+    <!--===========CABECERA========-->
+    <header id="cabecera">
+        <img src="img/logo-sunarp1.png" id="logo">
+        <h1>Reseteo de contraseña</h1>
+    </header>
 
-	<main>
-		<h1>Usted usa los siguientes sistemas</h1>
-		<h6>Marquen en la derecha los sistemas que desea recuperar</h6>
-		<h6>Las nuevas contraseñas le llegarán al siguiente correo: jorgevda96@gmail.com</h6>
+    <!--===========BARRA DE BIENVENIDA DE USUARIO========-->
+    <div class="cabecera-barra">
+        <div class="cabecera-barra-2">
+            <div class="cabecera-separador">
+                <h2>
+                    <div>Bienvenido</div>
+                </h2>
+                <nav>
+                    <div id="nombre_usuario">
+                        
+                    </div>
+                    <div id="nombre_area">
+                        
+                    </div>
+                    <button type="button" class="btn btn-danger" id="btn_cerrar_sesion">
+                        <i class="fas fa-power-off"></i> Salir
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </div>
 
-		<table id="tabla">
-			<!--
-			<tr>
-				<th>Sistemas</th>
-				<th>Recuperar</th>
-			</tr>
-			
-			<tr>
-				<td>SARP</td>
-				<td><input type="checkbox" name="sistema1" value="SARP"></td>
-			</tr>
-			<tr>
-				<td>SIR</td>
-				<td><input type="checkbox" name="sistema2" value="SIR"></td>
-			</tr>
-			<tr>
-				<td>PERMISOS</td>
-				<td><input type="checkbox" name="sistema3" value="PERMISOS"></td>
-			</tr>
-			<tr>
-				<td>BLOQUEOS</td>
-				<td><input type="checkbox" name="sistema4" value="BLOQUEOS"></td>
-			</tr>
-			<tr>
-				<td>SISTRAM</td>
-				<td><input type="checkbox" name="sistema5" value="SISTRAM"></td>
-			</tr> --> 
-		</table>
-		
-		<div id="content_button">
-			<button id="btn_recuperar">Recuperar</button>
-		</div>
-	</main>
+    <!--===========INFORMACIÓN========-->
+    <div class="alert alert-info" role="alert">
+        <strong>Usted usa los siguiente sistemas</strong>
+        <br>
+        Marque en la derecha los sistemas que desea resetear.
+    </div>
 
-	<script type="text/javascript" src="resources/jquery/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/logged.js"></script>
+    <!--===========TABLA DE SISTEMAS========-->
+    <div id="tabla">
+        <table class="table table-bordered" id="contenido_tabla">
+        	<!--
+            <thead>
+                <tr>
+                    <th scope="col" id="head1">Sistema</th>
+                    <th scope="col" id="head2">Resetear</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SARP</td>
+                    <td>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="checkbox1">
+                            <label class="custom-control-label" for="checkbox1"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SIR</td>
+                    <td>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="checkbox2">
+                            <label class="custom-control-label" for="checkbox2"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>PERMISOS</td>
+                    <td>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="checkbox3">
+                            <label class="custom-control-label" for="checkbox3"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>BLOQUEOS</td>
+                    <td>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="checkbox4">
+                            <label class="custom-control-label" for="checkbox4"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SISTRAM</td>
+                    <td>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="checkbox5">
+                            <label class="custom-control-label" for="checkbox5"></label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            -->
+        </table>
+    </div>
 
+    <!--===========BOTÓN DE RESETEAR========-->
+    <button type="button" class="btn btn-lg btn-primary" id="btn_recuperar">
+        <i class="fas fa-key"></i> Resetear
+    </button>
+
+
+    <script type="text/javascript" src="resources/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="resources/alertifyjs/alertify.js"></script>
+    <script type="text/javascript" src="js/logged.js"></script>
 </body>
 </html>

@@ -1,0 +1,89 @@
+body{
+	padding: 0px;
+	margin: 0px;
+}
+
+header{
+	background: black;
+	height: 82px;
+	margin: 0px;
+	text-align: center;
+}
+
+#logo_sunarp {
+	position: fixed;
+	width: 135px;
+	height: 60px;
+	left: 20px;
+	top: 10px;
+}
+
+#title{
+	display: inline-block;
+	color: #ff9900;
+	font-size: 32px;
+}
+
+#content_login {
+	width: 590px;
+	height: 450px;
+	border: solid black 2px;
+	margin: 50px auto;
+	text-align: center;
+}
+
+#logo_login{
+	margin-top: 15px;
+	font-size: 100px;
+	color: #085394;
+}
+
+#img_login{
+	width: 245px;
+	height: 110px;
+}
+
+#title_login{
+	font-size: 20px;
+}
+
+#form_login{
+	display: inline-block;
+	width: 70%;
+	text-align: left;
+}
+
+#content_btn{
+	text-align: center;
+}
+
+label {
+	margin-top: 20px;
+	font-style: bold;
+}
+
+input {
+	margin-top: 5px;
+	width: 100%;
+}
+
+#user {
+	text-transform:uppercase;
+}
+
+#btn_ingresar{
+	display: inline-block;
+	margin: auto;
+	background-color: #085394;
+	color: white;
+	border: none;
+	width: 127px;
+	height: 27px;
+	padding: 8px;
+}
+
+#BD{
+	width: 100%;
+}
+
+

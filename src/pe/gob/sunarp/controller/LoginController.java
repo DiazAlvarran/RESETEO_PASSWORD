@@ -143,6 +143,7 @@ public class LoginController extends HttpServlet {
 		
 		// Cambiar el estado de la sesión
 		session.setAttribute("is_logged", 0);
+		session.invalidate();
 		
 		// Volver a login
 		rd = request.getRequestDispatcher("index.html");

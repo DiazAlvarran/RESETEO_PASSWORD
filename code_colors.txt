@@ -1,0 +1,8 @@
+ROJO: #EB3118
+ANARANAJADO: #FFAF00
+VERDE: #8EC321
+TURQUEZA: #00A4A5
+PLOMO (LETRAS): #3D4B49
+
+
+Bienvenido al módulo de reseteo de contraseña
